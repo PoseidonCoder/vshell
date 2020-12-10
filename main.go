@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 	"os/exec"
-	"strings"
 	"vshell/src/builtins"
+	"vshell/src/parser"
 
 	"github.com/marcusolsson/tui-go"
 )
@@ -67,19 +67,14 @@ func main() {
 }
 
 func execInput(input string) error {
-	// Clean input of unnecessary characters
-	input = strings.TrimSuffix(input, "\r")
+	primary, args := parser.Scan(input)
 
-	args := strings.Split(input, " ")
-	primary := args[0]
-
-	//TODO: add command parser
-	err, found := builtins.RunCustom(primary, args[1:], output)
+	err, found := builtins.RunCustom(primary, args, output)
 	if found {
 		return err
 	}
 
-	out, err := exec.Command(primary, args[1:]...).Output()
+	out, err := exec.Command(primary, args...).Output()
 
 	info := tui.NewLabel(string(out))
 	info.SetStyleName("info")
