@@ -19,13 +19,17 @@ func RunCustom(primary string, args []string, root *tui.Box) (err error, found b
 			err = util.ErrNoPath
 			return
 		}
-	case "exit":
-		os.Exit(1)
 	case "ls":
 		if len(args) > 0 {
 			err = Ls(args[0], root)
 		} else {
 			err = util.ErrNoPath
+		}
+	case "mkdir":
+		for _, arg := range args {
+			if err = os.Mkdir(arg, os.ModeDir); err != nil {
+				return
+			}
 		}
 	default:
 		found = false

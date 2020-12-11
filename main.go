@@ -16,19 +16,18 @@ func main() {
 	root = tui.NewVBox()
 
 	theme := tui.NewTheme()
-	theme.SetStyle("normal", tui.Style{Bg: tui.ColorBlack, Fg: tui.ColorWhite})
+	theme.SetStyle("normal", tui.Style{Bg: tui.ColorGreen, Fg: tui.ColorGreen})
 
 	theme.SetStyle("label.fatal", tui.Style{Bg: tui.ColorDefault, Fg: tui.ColorRed})
 	theme.SetStyle("label.info", tui.Style{Bg: tui.ColorDefault, Fg: tui.ColorMagenta})
 
 	//Output area
 	output = tui.NewVBox()
-	output.SetTitle("Output")
-	output.SetBorder(true)
 	output.SetSizePolicy(tui.Expanding, tui.Expanding)
 	root.Append(output)
 
 	scroll := tui.NewScrollArea(output)
+	scroll.SetAutoscrollToBottom(true)
 
 	input := tui.NewEntry()
 	input.SetFocused(true)
