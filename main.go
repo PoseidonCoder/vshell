@@ -16,7 +16,6 @@ func main() {
 	root = tui.NewVBox()
 
 	theme := tui.NewTheme()
-	theme.SetStyle("normal", tui.Style{Bg: tui.ColorGreen, Fg: tui.ColorGreen})
 
 	theme.SetStyle("label.fatal", tui.Style{Bg: tui.ColorDefault, Fg: tui.ColorRed})
 	theme.SetStyle("label.info", tui.Style{Bg: tui.ColorDefault, Fg: tui.ColorMagenta})
