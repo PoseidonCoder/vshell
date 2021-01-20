@@ -31,6 +31,8 @@ func RunCustom(primary string, args []string, root *tui.Box) (err error, found b
 				return
 			}
 		}
+	case "exit":
+		os.Exit(1)
 	default:
 		found = false
 	}
