@@ -25,7 +25,7 @@ func main() {
 	output.SetSizePolicy(tui.Expanding, tui.Expanding)
 	root.Append(output)
 
-	scroll := tui.NewScrollArea(output)
+	scroll := tui.NewScrollArea(root)
 	scroll.SetAutoscrollToBottom(true)
 
 	input := tui.NewEntry()

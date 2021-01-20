@@ -23,7 +23,7 @@ func RunCustom(primary string, args []string, root *tui.Box) (err error, found b
 		if len(args) > 0 {
 			err = Ls(args[0], root)
 		} else {
-			err = util.ErrNoPath
+			Ls("./", root)
 		}
 	case "mkdir":
 		for _, arg := range args {
